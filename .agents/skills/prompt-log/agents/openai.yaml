@@ -1,0 +1,4 @@
+interface:
+  display_name: "Prompt Log"
+  short_description: "Append completed prompts to prompt_log.md"
+  default_prompt: "Use $prompt-log to append the completed prompt session and available conversation context to prompt_log.md."
