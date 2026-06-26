@@ -230,16 +230,72 @@ Tại bước Checkout, người dùng có thể nhập mã giảm giá. Hệ th
 
 ## 7. Phân hệ Mobile (React Native)
 
-### FR-20: Tính năng Mobile
+### FR-20: Giỏ hàng trên Mobile
 
-- Đầy đủ các chức năng: Xem sản phẩm, Đăng nhập, Đăng xuất, Đăng ký, Giỏ hàng, Thanh toán, Hồ sơ, Lịch sử đơn hàng.
-- Chức năng Hủy đơn hàng tuân theo đúng State Machine ở FR-10 (chỉ được hủy khi `pending` hoặc `confirmed`).
+Ứng dụng Mobile phải hỗ trợ Giỏ hàng tương đương FR-07.
+
+- Hiển thị danh sách sản phẩm trong giỏ với thông tin: **Sản phẩm**, **Đơn giá**, **Số lượng**, **Thành tiền**, **Thao tác**.
+- Thêm cùng một sản phẩm vào giỏ sẽ tăng số lượng, không tạo dòng mới.
+- Người dùng có thể tăng/giảm số lượng sản phẩm.
+- Nút **Xóa sản phẩm** phải có dialog xác nhận trước khi thực hiện.
+- Tổng tiền hiển thị nhãn chính xác: **"Tổng cộng"**.
+- Giỏ hàng trống phải có hình minh họa và thông báo rõ ràng.
+
+### FR-21: Thanh toán trên Mobile
+
+Ứng dụng Mobile phải hỗ trợ Thanh toán tương đương FR-08.
+
+- Chỉ người dùng **đã đăng nhập** mới tiến hành thanh toán được.
+- **Tổng tiền thanh toán** được tính tự động từ giỏ hàng và không cho phép người dùng chỉnh sửa trực tiếp.
+- Giao diện mobile hiển thị đầy đủ danh sách sản phẩm đặt mua.
+- Backend phải tự tính lại tổng tiền; không chấp nhận giá trị `total_amount` do client gửi lên.
+- Sau thanh toán thành công, giỏ hàng được xóa.
+
+### FR-22: Mã Giảm Giá trên Mobile
+
+Ứng dụng Mobile phải hỗ trợ Mã Giảm Giá tương đương FR-09.
+
+- Người dùng có thể nhập mã giảm giá tại bước Checkout.
+- Hệ thống áp dụng mã giảm giá khi thỏa mãn đầy đủ 5 điều kiện của FR-09: mã tồn tại và đang hoạt động, còn hạn sử dụng, đủ ngưỡng đơn hàng, đã đăng nhập, và chưa dùng hết lượt.
+- Công thức tính giảm giá phải giống FR-09.
+- Giao diện mobile phải hiển thị rõ số tiền giảm và tổng tiền cuối cùng.
+- Khi mã không hợp lệ, hết hạn, không đủ ngưỡng, hoặc hết lượt sử dụng, hệ thống phải hiển thị thông báo lỗi phù hợp.
+
+### FR-23: Quên mật khẩu & Đặt lại mật khẩu trên Mobile
+
+Ứng dụng Mobile phải hỗ trợ luồng Quên mật khẩu & Đặt lại mật khẩu tương đương FR-03.
+
+**Bước 1 — Lấy mã OTP:**
+
+- Người dùng nhập địa chỉ Email đã đăng ký.
+- Hệ thống sinh mã OTP **6 chữ số ngẫu nhiên** và gửi qua Email (trong môi trường demo: hiển thị trực tiếp trên màn hình).
+- Giao diện mobile phải hiển thị **chỉ báo bước (Step Indicator)** — ví dụ: "Bước 1 / 2".
+- Có nút **Quay lại đăng nhập**.
+
+**Bước 2 — Đặt lại mật khẩu:**
+
+- Người dùng nhập OTP, Mật khẩu mới, và **Xác nhận mật khẩu mới**.
+- Mật khẩu mới phải tuân thủ điều kiện như FR-01.
+- Hai trường mật khẩu phải khớp nhau.
+- OTP chỉ hợp lệ cho email đã yêu cầu, không thể dùng cho email khác.
+- Giao diện mobile phải hiển thị lỗi rõ ràng khi OTP sai, mật khẩu yếu, hoặc xác nhận mật khẩu không khớp.
+- Sau khi đặt lại mật khẩu thành công, người dùng được điều hướng về màn hình Đăng nhập.
+
+### FR-24: Xem lịch sử đơn hàng trên Mobile
+
+Ứng dụng Mobile phải hỗ trợ Xem lịch sử đơn hàng tương đương FR-11.
+
+- Người dùng chỉ xem được đơn hàng của chính mình.
+- Hiển thị: Mã đơn, Ngày đặt, Tổng tiền, Trạng thái hiện tại.
+- Trạng thái phải được dịch sang tiếng Việt rõ ràng và phân biệt màu sắc.
+- Khi người dùng chưa đăng nhập, ứng dụng phải yêu cầu đăng nhập trước khi xem lịch sử đơn hàng.
+- Khi không có đơn hàng, ứng dụng phải hiển thị trạng thái rỗng phù hợp.
 
 ---
 
 ## 8. Yêu cầu Giao diện (GUI Requirements)
 
-### FR-21: Tiêu chuẩn Giao diện Chung
+### GUI-01: Tiêu chuẩn Giao diện Chung
 
 - **Nhất quán ngôn ngữ**: Toàn bộ giao diện dùng tiếng Việt (trừ thuật ngữ kỹ thuật chuẩn).
 - **Nhất quán màu sắc**: Các nút hành động tích cực (Submit, Mua hàng) dùng màu xanh dương. Các nút nguy hiểm/hủy bỏ dùng màu đỏ.
@@ -247,7 +303,7 @@ Tại bước Checkout, người dùng có thể nhập mã giảm giá. Hệ th
 - **Tiêu đề trang**: Mỗi trang có đúng 1 thẻ `<h1>` mô tả nội dung trang.
 - **Tab Order**: Thứ tự focus theo Tab phải đi từ trên xuống dưới, trái sang phải.
 
-### FR-22: Form Requirements
+### GUI-02: Form Requirements
 
 - Tất cả trường bắt buộc phải có ký hiệu `*` bên cạnh nhãn.
 - Trường Email phải dùng `type="email"`.
@@ -255,14 +311,7 @@ Tại bước Checkout, người dùng có thể nhập mã giảm giá. Hệ th
 - Thông báo lỗi phải xuất hiện **trên** nút submit, không phải bên dưới.
 - Các form có từ 2 bước trở lên phải có **Step Indicator** rõ ràng.
 
-### FR-23: Navigation Requirements
-
-- Thanh điều hướng (Navbar) phải **highlight** trang đang được chọn.
-- Link "Giỏ hàng" phải hiển thị **badge số lượng** sản phẩm trong giỏ.
-- Nút Đăng xuất phải nhãn là "Đăng xuất" (không phải "Thoát").
-- Breadcrumb bắt buộc có ở các trang con (Giỏ hàng, Thanh toán, Chi tiết sản phẩm).
-
-### FR-24: Feedback & State Requirements
+### GUI-03: Feedback & State Requirements
 
 - Sau khi bấm "Thêm vào giỏ", phải có phản hồi trực quan (toast/badge).
 - Khi xóa item khỏi giỏ phải có dialog xác nhận.
