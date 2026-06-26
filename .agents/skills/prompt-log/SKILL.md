@@ -1,22 +1,24 @@
 ---
 name: prompt-log
-description: Append the completed Codex prompt session or available conversation transcript to prompt_log.md. Use when the user asks to log prompts, save the chat, record the full conversation after a prompt finishes, preserve AI interaction evidence, or maintain a prompt log for assignment submission.
+description: Append a verbatim, unedited transcript of the completed Codex prompt session or available conversation context to prompt_log.md. Use when the user asks to log prompts, save the chat, copy the full conversation exactly after a prompt finishes, preserve AI interaction evidence, or maintain a prompt log for assignment submission.
 ---
 
 # Prompt Log Skill
 
 ## 1. Mục đích
 
-Ghi lại toàn bộ đoạn chat hoặc phần hội thoại khả dụng vào `prompt_log.md` sau khi một prompt/task đã hoàn thành. Skill này dùng để lưu evidence về cách đã dùng AI trong bài tập.
+Ghi lại nguyên văn toàn bộ đoạn chat hoặc phần hội thoại khả dụng vào `prompt_log.md` sau khi một prompt/task đã hoàn thành. Skill này dùng để lưu evidence về cách đã dùng AI trong bài tập, nên độ trung thực của transcript quan trọng hơn độ gọn đẹp.
 
 ## 2. Nguyên tắc bắt buộc
 
 1. Ghi log sau khi đã hoàn thành việc chính của prompt.
 2. Không thay thế nội dung cũ trong `prompt_log.md`; luôn append thêm entry mới.
 3. Nếu không truy cập được toàn bộ lịch sử hội thoại, ghi rõ phạm vi log là `conversation context khả dụng`.
-4. Không bịa lại nội dung chat không có trong context.
-5. Giữ nguyên nội dung quan trọng của user prompt, assistant action, file đã sửa, command đã chạy, kết quả kiểm tra và blocker nếu có.
-6. Không ghi bí mật như token, password, key hoặc credential nếu xuất hiện; thay bằng `[REDACTED]`.
+4. Copy nguyên văn câu chữ, thứ tự, lỗi chính tả, cách viết tắt, dấu câu và ngôn ngữ của từng message trong context.
+5. Không tóm tắt, không diễn giải, không sửa văn phong, không dịch, không chuẩn hóa câu chữ.
+6. Không bịa lại nội dung chat không có trong context.
+7. Chỉ được thay đổi nội dung khi cần che bí mật như token, password, key hoặc credential; thay đúng phần bí mật bằng `[REDACTED]`.
+8. Nếu có tool output quá dài không còn đầy đủ trong context, ghi nguyên văn phần còn thấy được và ghi chú rõ phần bị thiếu.
 
 ## 3. File output
 
@@ -33,21 +35,21 @@ Mỗi lần ghi log, thêm một entry:
 ```md
 ## Prompt Log Entry - <YYYY-MM-DD HH:mm:ss TZ>
 
-### User Prompt
-<Nội dung prompt của người dùng trong lượt này>
+### Transcript
 
-### Conversation Context
-<Tóm tắt hoặc transcript phần hội thoại khả dụng liên quan đến prompt này>
+```text
+User:
+<copy nguyên văn user message>
 
-### Actions Taken
-- <File đã tạo/cập nhật>
-- <Command hoặc validation quan trọng đã chạy>
+Assistant:
+<copy nguyên văn assistant message>
 
-### Result
-<Kết quả cuối cùng, file liên quan, kiểm tra đã pass/fail/block>
+Tool:
+<copy nguyên văn tool call/output khả dụng nếu cần lưu evidence>
+```
 
 ### Notes
-<Giới hạn, giả định, hoặc phần không log được nếu có>
+<Chỉ ghi metadata hoặc giới hạn context, ví dụ: "Một phần hội thoại trước đó không còn trong context". Không tóm tắt nội dung chat tại đây trừ khi người dùng yêu cầu riêng.>
 ```
 
 ## 5. Khi người dùng yêu cầu "toàn bộ đoạn chat"
@@ -56,6 +58,7 @@ Mỗi lần ghi log, thêm một entry:
 2. Phân vai rõ `User`, `Assistant`, `Tool`, hoặc `System note` nếu cần.
 3. Nếu context đã bị compact hoặc thiếu đoạn cũ, ghi chú: `Một phần hội thoại trước đó không còn trong context, chỉ log phần khả dụng`.
 4. Không tự tạo lại nguyên văn những đoạn không còn nhìn thấy.
+5. Không thay một đoạn chat bằng summary. Nếu đoạn nào không thể copy nguyên văn, bỏ đoạn đó và ghi rõ lý do trong `Notes`.
 
 ## 6. Khi dùng cùng skill khác
 
