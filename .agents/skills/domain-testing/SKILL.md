@@ -178,7 +178,7 @@ Dùng ID:
 
 Mỗi file chỉ chứa một test case.
 
-Không chèn toàn bộ Domain Matrix vào từng test case.
+Cần chèn phần thông tin Domain Analysis vào trực tiếp trong từng file test case để dễ dàng theo dõi.
 
 ### Bước 7: Tổng kết coverage
 
@@ -254,8 +254,19 @@ Cấu trúc bắt buộc:
 ## Module / Test type / Technique
 <Module> / Functional / Domain Testing
 
-## Mục tiêu kiểm thử
-<Mục tiêu cụ thể>
+## Domain Analysis
+
+### Input Variables & Domain
+
+| Variable | Type | Domain / Constraints |
+|---|---|---|
+| <field name> | <type> | <domain / constraints> |
+
+### Domain Matrix
+
+| TC | <input 1> | <input 2> | <input 3> | Expected |
+|---|---|---|---|---|
+| <DT-ID> | <class/value> | <class/value> | <class/value> | <expected result> |
 
 ## Preconditions
 - <Điều kiện tiên quyết>
@@ -313,7 +324,7 @@ Mỗi test case phải có mục `Traceability`.
 - Không bịa constraint.
 - Tất cả output bằng tiếng Việt.
 - Mỗi test case chỉ nằm trong một file riêng.
-- Domain Matrix chỉ nằm trong analysis.
+- Domain Analysis được ghi trực tiếp vào từng test case file.
 - Có cả valid và invalid classes.
 - Có phân tích dependent conditions.
 - Mỗi test case map được về analysis.

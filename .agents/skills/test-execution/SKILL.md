@@ -93,20 +93,46 @@ Tạo hoặc cập nhật:
 Cấu trúc:
 
 ```md
-# Test Run - <FEATURE-ID>: <Feature Name>
+# Test Run: <FR-ID> — <Tên chức năng>
 
-## 1. Thông tin môi trường
+## Thông tin chung
 
-## 2. Phạm vi execution
+| Field | Value |
+|---|---|
+| **Requirement** | <FR-ID>: <Tên chức năng> |
+| **Ngày thực thi** | DD/MM/YYYY |
+| **Môi trường** | Browser: <browser> · OS: <os> · URL: <url> |
+| **Build / Commit** | `<commit_hash>` |
 
-## 3. Kết quả chi tiết
+---
 
-| Test Case ID | Status | Actual Result | Evidence | Related Bug |
-|---|---|---|---|---|
+## Kết quả thực thi
 
-## 4. Tổng kết
+### Domain Testing
 
-## 5. Blocker và ghi chú
+| Test Case ID | Mô tả | Tester | Result | Related Bug | Note |
+|---|---|---|---|---|---|
+| <TC-ID> | <Mô tả test case> | | Not Run | | |
+
+### Boundary Value Analysis (BVA)
+
+| Test Case ID | Mô tả | Tester | Result | Related Bug | Note |
+|---|---|---|---|---|---|
+| <TC-ID> | <Mô tả test case> | | Not Run | | |
+
+---
+
+## Tổng kết
+
+| Trạng thái | Số lượng |
+|---|---:|
+| Passed | 0 |
+| Failed | 0 |
+| Blocked | 0 |
+| Not Run | <total_not_run> |
+| **Tổng** | **<total>** |
+
+> **Ghi chú:** Khi Result = **Failed** hoặc **Blocked** → phải có **Related Bug** (link đến GitHub Issue) hoặc lý do rõ ràng trong cột **Note**.
 ```
 
 ## 6. Cập nhật test case file

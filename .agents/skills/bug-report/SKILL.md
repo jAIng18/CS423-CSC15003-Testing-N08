@@ -88,38 +88,34 @@ Tạo tại:
 Cấu trúc:
 
 ```md
-# BUG-FRXX-NNN: <Tiêu đề ngắn gọn>
+# <BUG-ID>: <Tên bug bằng tiếng Việt>
 
-## Summary
+## Found by Test Case
+<TC-ID>
 
-## Requirement / Test case
-- Requirement:
-- Test case:
-- Test run:
-
-## Environment
-
-## Preconditions
-
-## Steps to Reproduce
-1.
-
-## Expected Result
-
-## Actual Result
-
-## Evidence
+## Requirement liên quan
+<FR-ID>
 
 ## Severity / Priority
-- Severity:
-- Priority:
-- Lý do:
+<Severity> / <Priority>
 
-## Reproducibility
+## Environment
+**Browser**: <browser>
+**OS**: <os>
+**URL**: <url>
 
-## Impact
+## Steps to reproduce
+1. 
+2. 
 
-## Notes / Open questions
+## Expected result
+
+
+## Actual result
+
+
+## Evidence
+Screenshot / video / console log
 ```
 
 ## 5. Quy tắc chất lượng

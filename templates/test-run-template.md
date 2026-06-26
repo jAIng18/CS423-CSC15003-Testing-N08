@@ -31,10 +31,10 @@
 
 | Trạng thái | Số lượng |
 |---|---:|
-| ✅ Passed | 0 |
-| ❌ Failed | 0 |
-| 🚫 Blocked | 0 |
-| ⬜ Not Run | <total_not_run> |
+| Passed | 0 |
+| Failed | 0 |
+| Blocked | 0 |
+| Not Run | <total_not_run> |
 | **Tổng** | **<total>** |
 
 > **Ghi chú:** Khi Result = **Failed** hoặc **Blocked** → phải có **Related Bug** (link đến GitHub Issue) hoặc lý do rõ ràng trong cột **Note**.

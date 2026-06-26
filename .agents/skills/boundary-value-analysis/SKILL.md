@@ -216,7 +216,7 @@ Dùng ID:
 
 Mỗi file chỉ chứa một test case.
 
-Không chèn toàn bộ BVA Test Matrix vào từng test case.
+Cần chèn phần Boundary Analysis vào trực tiếp trong từng file test case để dễ dàng theo dõi.
 
 ### Bước 9: Tổng kết coverage
 
@@ -297,15 +297,21 @@ Cấu trúc bắt buộc:
 ## Module / Test type / Technique
 <Module> / Functional / Boundary Value Analysis (BVA)
 
-## Mục tiêu kiểm thử
-<Mục tiêu cụ thể>
+## Boundary Analysis
 
-## Boundary Point
-- Variable:
-- Constraint:
-- Boundary type:
-- Boundary point:
-- Test value:
+### Identified Boundaries
+
+| Variable | Constraint | Boundary Type | BVA Points |
+|---|---|---|---|
+| <variable> | <constraint> | <Min/Max boundary> | <OFF->, **<ON>**, <OFF+> |
+
+### BVA Test Matrix
+
+| TC | <input field> | <measured value> | Boundary Point | Các ràng buộc khác | Expected |
+|---|---|---|---|---|---|
+| <BVA-ID> | <test value> | <value> | <ON/OFF- /OFF+> | <nominal constraints> | <expected result> |
+
+> **Ghi chú:** <Giải thích dữ liệu test và cách isolate biến đang kiểm tra.>
 
 ## Preconditions
 - <Điều kiện tiên quyết>
@@ -361,7 +367,7 @@ Mỗi test case phải có mục `Traceability`.
 - Phân biệt inclusive/exclusive boundary.
 - ON, OFF⁻, OFF⁺ được giải thích đúng.
 - Test string có đúng length.
-- BVA Test Matrix chỉ nằm trong analysis.
+- Boundary Analysis được ghi trực tiếp vào từng test case file.
 - Mỗi test case nằm trong file riêng.
 - Mỗi test case map được về boundary value.
 - Missing requirement được ghi rõ.
