@@ -11,7 +11,7 @@ Review test case đã tạo trước khi execution. Skill này không mặc đ�
 
 ## 2. Quy tắc ngôn ngữ
 
-1. Toàn bộ output viết bằng tiếng Việt.
+1. Toàn bộ output viết bằng tiếng Việt có dấu chuẩn.
 2. Giữ nguyên ID, route, URL, field name, test data, thông báo hệ thống và đường dẫn file.
 3. Có thể giữ các thuật ngữ: Domain Testing, Boundary Value Analysis, Expected Result, Actual Result, Traceability, Preconditions, Pass, Fail, Blocked, Not Run.
 
@@ -42,7 +42,7 @@ Review từng analysis file và test case file theo các điểm sau:
 - Domain Matrix hoặc BVA Matrix có nằm trong analysis, không lặp lại đầy đủ trong từng test case.
 - Test case có duplicate mục tiêu, duplicate data hoặc duplicate coverage không.
 - Status ban đầu phải là `Not Run / None` nếu chưa execution.
-- Output có đúng tiếng Việt và đúng format template project không.
+- Output có đúng tiếng Việt có dấu và đúng format template project không.
 
 ## 5. Cách review
 

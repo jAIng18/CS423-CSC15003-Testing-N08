@@ -13,7 +13,7 @@ Skill phải tạo cả analysis và test case, không chỉ sinh danh sách tes
 
 ## 2. Quy tắc ngôn ngữ
 
-1. Toàn bộ nội dung đầu ra phải được viết bằng tiếng Việt.
+1. Toàn bộ nội dung đầu ra phải được viết bằng tiếng Việt có dấu chuẩn.
 2. Có thể giữ các thuật ngữ:
    - Boundary Value Analysis (BVA)
    - ON
@@ -23,7 +23,7 @@ Skill phải tạo cả analysis và test case, không chỉ sinh danh sách tes
    - Normal BVA
    - Preconditions
    - Expected Result
-3. Tiêu đề, giải thích, lý do chọn giá trị và kết luận phải bằng tiếng Việt.
+3. Tiêu đề, giải thích, lý do chọn giá trị và kết luận phải bằng tiếng Việt có dấu chuẩn.
 4. Giữ nguyên ID, tên biến, URL, route, dữ liệu test và thông báo thực tế.
 5. Không tự ý viết toàn bộ output bằng tiếng Anh.
 
@@ -329,13 +329,6 @@ Cấu trúc bắt buộc:
 ## Expected result
 <Kết quả quan sát được>
 
-## Traceability
-- Requirement:
-- Test condition:
-- Boundary Value ID:
-- Boundary point:
-- Analysis file:
-
 ## Status / Related bugs
 Not Run / None
 ```
@@ -358,7 +351,6 @@ Analysis phải có bảng:
 | Test Case ID | Boundary Value ID | Boundary | Test Value | Expected Validity | Requirement Reference |
 |---|---|---|---|---|---|
 
-Mỗi test case phải có mục `Traceability`.
 
 ## 9. Kiểm tra trước khi hoàn tất
 

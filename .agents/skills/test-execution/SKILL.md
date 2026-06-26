@@ -11,7 +11,7 @@ Ghi nhận kết quả execution cho các test case đã được approve. Skill
 
 ## 2. Quy tắc ngôn ngữ
 
-1. Toàn bộ nội dung output viết bằng tiếng Việt.
+1. Toàn bộ nội dung output viết bằng tiếng Việt có dấu chuẩn.
 2. Giữ nguyên ID, field name, URL, route, test data, message thực tế và tên file evidence.
 3. Có thể giữ các thuật ngữ: Actual Result, Expected Result, Pass, Fail, Blocked, Not Run, Evidence, Environment.
 

@@ -11,7 +11,7 @@ Tạo bug report có thể reproduce từ test case bị Fail. Skill này không
 
 ## 2. Quy tắc ngôn ngữ
 
-1. Nội dung bug report viết bằng tiếng Việt.
+1. Nội dung bug report viết bằng tiếng Việt có dấu chuẩn.
 2. Giữ nguyên Expected Result, Actual Result, message thực tế, URL, route, account test, file evidence và test case ID.
 3. Có thể giữ thuật ngữ: Severity, Priority, Environment, Steps to Reproduce, Expected Result, Actual Result, Evidence, Regression.
 

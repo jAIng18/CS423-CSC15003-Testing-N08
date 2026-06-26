@@ -13,7 +13,7 @@ Skill phải thể hiện đầy đủ quá trình từ requirement đến test 
 
 ## 2. Quy tắc ngôn ngữ
 
-1. Toàn bộ nội dung đầu ra phải được viết bằng tiếng Việt.
+1. Toàn bộ nội dung đầu ra phải được viết bằng tiếng Việt có dấu chuẩn.
 2. Có thể giữ nguyên các thuật ngữ kiểm thử phổ biến bằng tiếng Anh khi cần, ví dụ:
    - Domain Testing
    - Equivalence Class
@@ -21,7 +21,7 @@ Skill phải thể hiện đầy đủ quá trình từ requirement đến test 
    - Preconditions
    - Expected Result
    - Status
-3. Tiêu đề, mô tả, giải thích, lý do chọn test data và kết luận phải viết bằng tiếng Việt.
+3. Tiêu đề, mô tả, giải thích, lý do chọn test data và kết luận phải viết bằng tiếng Việt có dấu chuẩn.
 4. ID, tên biến, URL, route, dữ liệu test và thông báo thực tế của hệ thống phải được giữ nguyên.
 5. Không tự ý chuyển tài liệu sang tiếng Anh.
 
@@ -284,12 +284,6 @@ Cấu trúc bắt buộc:
 ## Expected result
 <Kết quả quan sát được>
 
-## Traceability
-- Requirement:
-- Test condition:
-- Equivalence class:
-- Analysis file:
-
 ## Status / Related bugs
 Not Run / None
 ```
@@ -317,12 +311,11 @@ Analysis phải có bảng:
 | Test Case ID | Test Condition | Covered Classes | Requirement Reference | Lý do lựa chọn |
 |---|---|---|---|---|
 
-Mỗi test case phải có mục `Traceability`.
 
 ## 9. Kiểm tra trước khi hoàn tất
 
 - Không bịa constraint.
-- Tất cả output bằng tiếng Việt.
+- Tất cả output bằng tiếng Việt có dấu chuẩn.
 - Mỗi test case chỉ nằm trong một file riêng.
 - Domain Analysis được ghi trực tiếp vào từng test case file.
 - Có cả valid và invalid classes.
