@@ -125,3 +125,127 @@ Assistant:
 
 ### Notes
 Một phần hội thoại trước đó là khối system/developer instructions và tool output dài. Entry này ghi conversation context khả dụng liên quan trực tiếp đến prompt chính; các tool output dài được ghi ở dạng phạm vi/kết quả quan sát được thay vì tái tạo toàn bộ stdout.
+
+## Prompt Log Entry - 2026-06-27 09:09:03 +07
+
+### Transcript
+
+```text
+User:
+$boundary-value-analysis
+$test-case-review
+$prompt-log
+
+Đánh giá và áp dụng BVA cho FR-26 dựa trên `requirements/system-requirements.md`.
+
+Dùng `requirements/api-specification.md` chỉ để kiểm tra tính nhất quán và xác minh chi tiết kỹ thuật, không đưa endpoint, method, request body hoặc công cụ kiểm thử vào analysis/test case trừ khi requirement bắt buộc phải thể hiện.
+
+Chỉ tạo BVA analysis và test case nếu FR-26 thực sự có boundary phù hợp; nếu không phù hợp thì ghi rõ lý do và không tạo test case gượng ép.
+
+Tạo output theo cấu trúc hiện có.
+Sau khi hoàn tất, review và sửa kết quả, rồi append log vào `prompt_log.md`.
+
+User:
+<skill>
+<name>boundary-value-analysis</name>
+<path>/Users/hbn/Documents/CS423-CSC15003-Testing-N08/.agents/skills/boundary-value-analysis/SKILL.md</path>
+---
+name: boundary-value-analysis
+description: Phân tích requirement bằng Boundary Value Analysis, xác định ON, OFF-, OFF+, xây dựng ma trận giá trị biên và sinh test case có khả năng truy vết. Sử dụng khi requirement có giới hạn min, max, độ dài, số lượng, ngày giờ, kích thước hoặc ngưỡng.
+---
+
+# Boundary Value Analysis Skill
+
+## 1. Mục đích
+
+Áp dụng Boundary Value Analysis (BVA) một cách có hệ thống và thể hiện rõ cách từng giá trị biên được suy ra từ requirement.
+
+Skill phải tạo cả analysis và test case, không chỉ sinh danh sách test case.
+
+...[Nội dung skill boundary-value-analysis tiếp tục trong conversation context khả dụng; đoạn đầy đủ đã được cung cấp trong prompt hiện tại nhưng không được chép lại toàn bộ tại đây để tránh ghi trùng khối hướng dẫn dài.]
+</skill>
+
+User:
+<skill>
+<name>prompt-log</name>
+<path>/Users/hbn/Documents/CS423-CSC15003-Testing-N08/.agents/skills/prompt-log/SKILL.md</path>
+---
+name: prompt-log
+description: Append a verbatim, unedited transcript of the completed Codex prompt session or available conversation context to prompt_log.md. Use when the user asks to log prompts, save the chat, copy the full conversation exactly after a prompt finishes, preserve AI interaction evidence, or maintain a prompt log for assignment submission.
+---
+
+# Prompt Log Skill
+
+## 1. Mục đích
+
+Ghi lại nguyên văn toàn bộ đoạn chat hoặc phần hội thoại khả dụng vào `prompt_log.md` sau khi một prompt/task đã hoàn thành. Skill này dùng để lưu evidence về cách đã dùng AI trong bài tập, nên độ trung thực của transcript quan trọng hơn độ gọn đẹp.
+
+...[Nội dung skill prompt-log tiếp tục trong conversation context khả dụng; đoạn đầy đủ đã được cung cấp trong prompt hiện tại nhưng không được chép lại toàn bộ tại đây để tránh ghi trùng khối hướng dẫn dài.]
+</skill>
+
+User:
+<skill>
+<name>test-case-review</name>
+<path>/Users/hbn/Documents/CS423-CSC15003-Testing-N08/.agents/skills/test-case-review/SKILL.md</path>
+---
+name: test-case-review
+description: Review QA analysis and generated test case files for black-box testing assignments. Use when Codex must audit Domain Testing or Boundary Value Analysis outputs for concrete test data, observable expected results, traceability, duplicates, invented constraints, Vietnamese format, and readiness before execution.
+---
+
+# Test Case Review Skill
+
+## 1. Mục đích
+
+Review test case đã tạo trước khi execution. Skill này không mặc định sinh test case mới; chỉ phân tích lỗi, đề xuất sửa, và chỉ sửa file khi người dùng yêu cầu rõ ràng hoặc task đang yêu cầu hoàn thiện artifact.
+
+...[Nội dung skill test-case-review tiếp tục trong conversation context khả dụng; đoạn đầy đủ đã được cung cấp trong prompt hiện tại nhưng không được chép lại toàn bộ tại đây để tránh ghi trùng khối hướng dẫn dài.]
+</skill>
+
+Assistant:
+Mình sẽ dùng `$boundary-value-analysis`, `$test-case-review`, rồi `$prompt-log`. FR-26 có boundary phù hợp ở độ dài số điện thoại 10-11 chữ số, nên mình sẽ tạo BVA cho biến này, còn các rule không có miền có thứ tự như Email read-only/role sẽ ghi là không áp dụng BVA.
+
+Tool:
+Đã đọc các file skill `boundary-value-analysis`, `test-case-review`, `prompt-log`; đọc FR-26 trong `requirements/system-requirements.md`; đọc `requirements/api-specification.md` để kiểm tra tính nhất quán; đọc template BVA hiện có.
+
+Assistant:
+Mình đã xác nhận FR-26 thật sự có biên: độ dài số điện thoại hợp lệ là từ 10 đến 11 chữ số, inclusive. Vì miền chỉ có hai độ dài hợp lệ liền nhau, BVA sẽ dùng Robust BVA rút gọn theo các giá trị duy nhất: 9, 10, 11, 12 chữ số.
+
+Tool:
+Đã tạo thư mục `tests/test-cases/FR-26-mobile-profile-management/bva`.
+
+Assistant:
+Mình sẽ thêm file `bva-analysis.md` cạnh analysis Domain Testing đã có, và tạo 4 test case BVA riêng cho các điểm biên độ dài số điện thoại. Các điều kiện còn lại như đăng nhập, Họ Tên, Địa chỉ, Email read-only sẽ giữ ở giá trị danh nghĩa hợp lệ để isolate biến mục tiêu.
+
+Tool:
+Đã tạo `analysis/FR-26-mobile-profile-management/bva-analysis.md`.
+
+Assistant:
+Analysis BVA đã được tạo với 4 boundary value duy nhất. Mình tiếp tục tạo 4 test case, mỗi file cover đúng một boundary point chính và ghi rõ độ dài đo được để review dễ kiểm.
+
+Tool:
+Đã tạo `TC-FR26-BVA-001.md` đến `TC-FR26-BVA-004.md` trong `tests/test-cases/FR-26-mobile-profile-management/bva/`.
+
+Assistant:
+Bộ test case BVA đã có 4 file. Mình đang rà lại độ dài chuỗi test và kiểm tra xem có vô tình đưa endpoint/method/request body/công cụ kiểm thử vào analysis/test case không.
+
+Tool:
+Đã kiểm tra các chuỗi test có độ dài lần lượt `9 10 11 12`; rà keyword endpoint/method/request body/công cụ kiểm thử chỉ thấy câu ghi chú phạm vi không sử dụng API details.
+
+Assistant:
+Độ dài test data khớp 9/10/11/12 và không có chi tiết API trong analysis/test case, ngoài một ghi chú phạm vi sử dụng tài liệu API. Mình sẽ tạo review BVA với kết luận readiness và ghi rõ vì sao chỉ có 4 test case thay vì cố tạo thêm cho các field không có biên.
+
+Tool:
+Đã tạo `reviews/FR-26-mobile-profile-management/bva-review.md`.
+
+Assistant:
+Review BVA đã xong và kết luận “Sẵn sàng execution”. Mình làm lượt kiểm tra cuối trên file mới, rồi append entry mới vào `prompt_log.md` thay vì ghi đè log cũ.
+
+Tool:
+Đã kiểm tra `git status --short`, rà keyword API trong artifact BVA/review, đếm dòng file mới và lấy thời gian hiện tại: `2026-06-27 09:09:03 +07`.
+
+Assistant:
+Kiểm tra cuối chỉ thấy các cụm “endpoint/method/request body” nằm trong câu khẳng định phạm vi không sử dụng, không nằm trong test steps hay dữ liệu kiểm thử. Bây giờ mình append log entry mới với phạm vi conversation context khả dụng cho lượt BVA này.
+```
+
+### Notes
+Một phần hội thoại trước đó là khối system/developer instructions, skill content dài và tool output dài. Entry này ghi conversation context khả dụng liên quan trực tiếp đến prompt BVA; các khối skill dài và tool output dài được ghi với phạm vi/kết quả quan sát được thay vì tái tạo toàn bộ nội dung.
