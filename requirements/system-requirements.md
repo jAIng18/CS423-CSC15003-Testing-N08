@@ -230,18 +230,18 @@ Tại bước Checkout, người dùng có thể nhập mã giảm giá. Hệ th
 
 ## 7. Phân hệ Mobile (React Native)
 
-### FR-20: Giỏ hàng trên Mobile
+### FR-25: Đăng ký tài khoản trên Mobile
 
-Ứng dụng Mobile phải hỗ trợ Giỏ hàng tương đương FR-07.
+Ứng dụng Mobile phải hỗ trợ Đăng ký tài khoản tương đương FR-01.
 
-- Hiển thị danh sách sản phẩm trong giỏ với thông tin: **Sản phẩm**, **Đơn giá**, **Số lượng**, **Thành tiền**, **Thao tác**.
-- Thêm cùng một sản phẩm vào giỏ sẽ tăng số lượng, không tạo dòng mới.
-- Người dùng có thể tăng/giảm số lượng sản phẩm.
-- Nút **Xóa sản phẩm** phải có dialog xác nhận trước khi thực hiện.
-- Tổng tiền hiển thị nhãn chính xác: **"Tổng cộng"**.
-- Giỏ hàng trống phải có hình minh họa và thông báo rõ ràng.
+- Người dùng phải cung cấp: **Họ Tên**, **Email**, **Mật khẩu**.
+- Email phải có định dạng hợp lệ (`user@domain.com`) và là duy nhất trong hệ thống.
+- **Yêu cầu mật khẩu mạnh**: Tối thiểu 8 ký tự, có ít nhất 1 chữ hoa, 1 chữ thường, 1 chữ số và 1 ký tự đặc biệt (`@`, `$`, `!`, `%`, `*`, `?`, `&`).
+- Phải có trường **Xác nhận mật khẩu** — hệ thống từ chối nếu hai trường không khớp.
+- Giao diện mobile hiển thị thông báo lỗi trực quan nếu dữ liệu nhập vào không hợp lệ.
+- Sau khi đăng ký thành công, người dùng được chuyển tới màn hình Đăng nhập.
 
-### FR-21: Thanh toán trên Mobile
+### FR-26: Thanh toán trên Mobile
 
 Ứng dụng Mobile phải hỗ trợ Thanh toán tương đương FR-08.
 
@@ -251,7 +251,17 @@ Tại bước Checkout, người dùng có thể nhập mã giảm giá. Hệ th
 - Backend phải tự tính lại tổng tiền; không chấp nhận giá trị `total_amount` do client gửi lên.
 - Sau thanh toán thành công, giỏ hàng được xóa.
 
-### FR-22: Mã Giảm Giá trên Mobile
+### FR-27: Quản lý hồ sơ cá nhân trên Mobile
+
+Ứng dụng Mobile phải hỗ trợ Quản lý hồ sơ cá nhân tương đương FR-04.
+
+- Người dùng đã đăng nhập có thể cập nhật: **Họ Tên**, **Số điện thoại**, **Địa chỉ giao hàng mặc định**.
+- **Số điện thoại hợp lệ**: bắt đầu bằng số `0`, từ 10–11 chữ số.
+- Email không được phép thay đổi qua giao diện mobile (được hiển thị dưới dạng read-only).
+- Người dùng chỉ có thể cập nhật hồ sơ của chính mình; không thể tự thay đổi thuộc tính `role`.
+- Giao diện mobile hiển thị rõ ràng thông báo thành công khi cập nhật hồ sơ, hoặc lỗi khi nhập số điện thoại không hợp lệ.
+
+### FR-28: Mã Giảm Giá trên Mobile
 
 Ứng dụng Mobile phải hỗ trợ Mã Giảm Giá tương đương FR-09.
 
@@ -261,7 +271,7 @@ Tại bước Checkout, người dùng có thể nhập mã giảm giá. Hệ th
 - Giao diện mobile phải hiển thị rõ số tiền giảm và tổng tiền cuối cùng.
 - Khi mã không hợp lệ, hết hạn, không đủ ngưỡng, hoặc hết lượt sử dụng, hệ thống phải hiển thị thông báo lỗi phù hợp.
 
-### FR-23: Quên mật khẩu & Đặt lại mật khẩu trên Mobile
+### FR-29: Quên mật khẩu & Đặt lại mật khẩu trên Mobile
 
 Ứng dụng Mobile phải hỗ trợ luồng Quên mật khẩu & Đặt lại mật khẩu tương đương FR-03.
 
@@ -280,16 +290,6 @@ Tại bước Checkout, người dùng có thể nhập mã giảm giá. Hệ th
 - OTP chỉ hợp lệ cho email đã yêu cầu, không thể dùng cho email khác.
 - Giao diện mobile phải hiển thị lỗi rõ ràng khi OTP sai, mật khẩu yếu, hoặc xác nhận mật khẩu không khớp.
 - Sau khi đặt lại mật khẩu thành công, người dùng được điều hướng về màn hình Đăng nhập.
-
-### FR-24: Xem lịch sử đơn hàng trên Mobile
-
-Ứng dụng Mobile phải hỗ trợ Xem lịch sử đơn hàng tương đương FR-11.
-
-- Người dùng chỉ xem được đơn hàng của chính mình.
-- Hiển thị: Mã đơn, Ngày đặt, Tổng tiền, Trạng thái hiện tại.
-- Trạng thái phải được dịch sang tiếng Việt rõ ràng và phân biệt màu sắc.
-- Khi người dùng chưa đăng nhập, ứng dụng phải yêu cầu đăng nhập trước khi xem lịch sử đơn hàng.
-- Khi không có đơn hàng, ứng dụng phải hiển thị trạng thái rỗng phù hợp.
 
 ---
 
