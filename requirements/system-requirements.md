@@ -241,17 +241,7 @@ Tại bước Checkout, người dùng có thể nhập mã giảm giá. Hệ th
 - Giao diện mobile hiển thị thông báo lỗi trực quan nếu dữ liệu nhập vào không hợp lệ.
 - Sau khi đăng ký thành công, người dùng được chuyển tới màn hình Đăng nhập.
 
-### FR-26: Thanh toán trên Mobile
-
-Ứng dụng Mobile phải hỗ trợ Thanh toán tương đương FR-08.
-
-- Chỉ người dùng **đã đăng nhập** mới tiến hành thanh toán được.
-- **Tổng tiền thanh toán** được tính tự động từ giỏ hàng và không cho phép người dùng chỉnh sửa trực tiếp.
-- Giao diện mobile hiển thị đầy đủ danh sách sản phẩm đặt mua.
-- Backend phải tự tính lại tổng tiền; không chấp nhận giá trị `total_amount` do client gửi lên.
-- Sau thanh toán thành công, giỏ hàng được xóa.
-
-### FR-27: Quản lý hồ sơ cá nhân trên Mobile
+### FR-26: Quản lý hồ sơ cá nhân trên Mobile
 
 Ứng dụng Mobile phải hỗ trợ Quản lý hồ sơ cá nhân tương đương FR-04.
 
@@ -260,6 +250,16 @@ Tại bước Checkout, người dùng có thể nhập mã giảm giá. Hệ th
 - Email không được phép thay đổi qua giao diện mobile (được hiển thị dưới dạng read-only).
 - Người dùng chỉ có thể cập nhật hồ sơ của chính mình; không thể tự thay đổi thuộc tính `role`.
 - Giao diện mobile hiển thị rõ ràng thông báo thành công khi cập nhật hồ sơ, hoặc lỗi khi nhập số điện thoại không hợp lệ.
+
+### FR-27: Thanh toán trên Mobile
+
+Ứng dụng Mobile phải hỗ trợ Thanh toán tương đương FR-08.
+
+- Chỉ người dùng **đã đăng nhập** mới tiến hành thanh toán được.
+- **Tổng tiền thanh toán** được tính tự động từ giỏ hàng và không cho phép người dùng chỉnh sửa trực tiếp.
+- Giao diện mobile hiển thị đầy đủ danh sách sản phẩm đặt mua.
+- Backend phải tự tính lại tổng tiền; không chấp nhận giá trị `total_amount` do client gửi lên.
+- Sau thanh toán thành công, giỏ hàng được xóa.
 
 ### FR-28: Mã Giảm Giá trên Mobile
 
